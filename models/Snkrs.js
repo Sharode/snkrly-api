@@ -17,8 +17,8 @@ const snkrSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    colorWay: {
-        type: String,
+    colorway: {
+        type: [String],
         required: true,
         minlength: 3,
         maxlength: 20
