@@ -2,13 +2,16 @@
   "name": "snkrly",
   "version": "1.0.0",
   "description": "A collection of people favorite sneakers",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index",
-    "server": "nodemon index"
+    "start": "node server",
+    "server": "nodemon server",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+
   },
-  "author": "",
+  "author": "Neil Williams",
   "license": "MIT",
   "dependencies": {
     "config": "^3.2.2",
