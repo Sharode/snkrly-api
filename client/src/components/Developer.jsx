@@ -1,10 +1,21 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, {useState} from 'react'
+import {getTable} from '../data/table'
+import Method from './Method'
+import Table from './HttpTable'
+import { attrs, getMethod, getObj } from '../data/methods';
 
-const Developer = props => {
+const Developer = () => {
+    const [tableData] = useState(getTable())
+    const [devData] = useState({
+        attr: attrs(),
+        path: getMethod(),
+        val: getObj()
+    })
+
+
     return (
-       <div className="">
-       <section className="container flex flex-col p-5  ">
+       <div className="mx-6">
+         <section className="container flex flex-col py-5  ">
             <h1 className="text-2xl text-white pb-1"> Snkrly Developer API</h1>
             <p className="pt-4 text-base">The Stripe API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.</p>
             <p className="pt-4 text-base">
@@ -23,7 +34,7 @@ const Developer = props => {
                 </div>
             </div>
         </section>
-        <section className="flex flex-col p-5 border-t mt-6">
+        <section className="flex flex-col py-5 border-t mt-6">
             <div className="">
                 <h1 className="text-2xl text-white pt-6"> Errors</h1>
                 <p className="pt-4 text-base">
@@ -35,13 +46,16 @@ const Developer = props => {
             </div>
 
         </section>
+        <section>
+            <Table data={tableData}/>
+
+        </section>
+        <section className=" border-t mt-6 py-4">
+            <Method  attrs={devData.attr} paths={devData.path} obj_values={devData.val}/>
+        </section>
        </div>
         
     )
-}
-
-Developer.propTypes = {
-
 }
 
 export default Developer
