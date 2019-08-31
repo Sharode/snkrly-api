@@ -24,10 +24,10 @@ router.get('/', async (req, res) => {
 // Desc   At a snkr to thr database
 router.post('/', async (req, res )=> {
     try {
-    const {name, tech, colorway, releaseDate} = req.body
+    const {name, tech, colorway, brand,releaseDate} = req.body
 
     const newSnkr = new Snkr({
-        name, tech, releaseDate, colorway
+        name, tech, brand, releaseDate, colorway
     })
     const snkr = await newSnkr.save()
     res.json(snkr)
@@ -43,7 +43,7 @@ router.post('/', async (req, res )=> {
 
 router.get('/:id', async (req, res)=> {
     try {
-        const snkr = await Snkr.findById(req.params.id)
+        const snkr = await Snkr.findById(req.params.id).populate("brandlists", ["name", "creator"])
         if(!snkr) return res.status(400).send('This Snkr is not in our datbase')
 
         res.json(snkr)
@@ -62,16 +62,18 @@ router.get('/:id', async (req, res)=> {
 // Desc   update snkr by id
 
 router.patch('/:id', async (req, res)=> {
-    const {tech, colorway, releaseDate, name} = req.body;
+    const {tech, colorway, releaseDate, brand, name} = req.body;
 
     let snkrFields = {}
 
     if(tech) snkrFields.tech = tech
+    if(brand) snkrFields.brand = brand
+
     if(name) snkrFields.name = name
     if(colorway) snkrFields.colorway = colorway.split(",").map(colors => colors.trim())
   
     if(releaseDate) snkrFields.releaseDate = releaseDate
-()
+
     try {
         let snkr = await Snkr.findById(req.params.id)
 
@@ -91,9 +93,6 @@ router.patch('/:id', async (req, res)=> {
         
     }
 })
-
-
-
 
 
 

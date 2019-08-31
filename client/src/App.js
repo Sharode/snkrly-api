@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 function App() {
   return (
 
-    <div className=" h-full w-full bg-gray-800 text-gray-400 text-base" >
+    <div className=" h-full w-full bg-white text-gray-800 text-base font-mono" >
       <Navbar />
       <Developer />
       {/* <form action="" className=" bg-white shadow-md rounded px-8 py-8 pt-8">
