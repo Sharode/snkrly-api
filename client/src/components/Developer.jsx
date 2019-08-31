@@ -14,8 +14,8 @@ const Developer = () => {
 
 
     return (
-       <div className="mx-6">
-         <section className="flex flex-col py-5 md:flex-row">
+       <div className="mx-6 bg-white text-gray-800 ">
+        <section className="flex flex-col py-5 md:flex-row">
              <div className="md:w-1/2">
                 <h1 className="text-2xl pb-1"> Snkrly Developer API</h1>
                 <p className="pt-4 text-base">The Snkrly API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.</p>
@@ -40,7 +40,7 @@ const Developer = () => {
             <div className="md:w-1/2">
                 <h1 className="text-2xl pt-6"> Errors</h1>
                 <p className="pt-4 text-base">
-                Snkrly uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Stripe's servers (these are rare).
+                Snkrly uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.). Codes in the 5xx range indicate an error with Snkrly's servers (these are rare).
                 </p>
                 <p className="pt-4 text-base">
                 Some 4xx errors that could be handled programmatically (e.g., a card is declined) include an error code that briefly explains the error reported

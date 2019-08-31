@@ -1,16 +1,17 @@
 import React from 'react'
 
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom';
 
 const Navbar = props => {
     return (
-        <div className="sail-gray900">
-            <ul className="flex justify-end">
-                <li >
-                    <a href="!#"> Home</a>
+        <div className="bg-white text-gray-800 ">
+            <ul className="flex justify-end text-lg">
+                <li className="p-4" >
+                    <Link to="/"> Home</Link>
                 </li>
-                <li className="ml-1 mr-1">
-                    <a href="!#"> Docs</a>
+                <li className="p-4">
+                    <Link to="/developer"> Docs</Link>
                 </li>
             </ul>
         </div>
