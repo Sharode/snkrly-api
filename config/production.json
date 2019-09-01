@@ -1,4 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://snkrly:Snkrly123@cluster0-o2lbb.mongodb.net/test?retryWrites=true&w=majority",
+    "mongoURI": "mongodb+srv://snkrly:Snkrly123@cluster0-o2lbb.mongodb.net/test?retryWrites=true&w=majority"
 }
 
