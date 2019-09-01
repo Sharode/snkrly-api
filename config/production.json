@@ -1,5 +1,4 @@
 {
     "mongoURI": "mongodb+srv://snkrly:Snkrly123@cluster0-o2lbb.mongodb.net/test?retryWrites=true&w=majority",
-    "notes": "// normally you'll have a development database and a production database. Right now its the same"
 }
 
