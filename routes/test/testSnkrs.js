@@ -24,10 +24,10 @@ router.get('/', async (req, res) => {
 // Desc   At a snkr to thr database
 router.post('/', async (req, res )=> {
     try {
-    const {name, tech, colorway, releaseDate} = req.body
+    const {name, tech, colorway,brand,retro, releaseDate} = req.body
 
     const newSnkr = new TestSnkr({
-        name, tech, releaseDate, colorway
+        name, tech, releaseDate, colorway, brand, retro
     })
     const snkr = await newSnkr.save()
     res.json(snkr)

@@ -8,7 +8,6 @@ const testSnkrSchema = new mongoose.Schema({
     },
     brand:{
         type: String,
-        required: true
     },
     tech: {
         type: String,
@@ -22,7 +21,6 @@ const testSnkrSchema = new mongoose.Schema({
     },
     retro:{
         type: Boolean,
-        required: true
     },
     colorway: {
         type: [String],

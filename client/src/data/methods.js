@@ -5,6 +5,12 @@ const snkrsAttrs = [
         _obj: "string",
         text: "Unique identifier for the object."
     },
+      {
+        _id: 8,
+        attr: "brand",
+        _obj: "string",
+        text: "The brand the sneaker was developed under."
+    },
     {
         _id: 1,
         attr: "colorWay",
@@ -60,6 +66,11 @@ const objAttr = [
         id: 1,
         output: `"id": "5d6a1039d17fdf416cxx0f71",`
     },
+     {
+        id: 7,
+        output: `"brand": "Jordan",`
+    },
+
     {
         id: 2,
         output: `"colorWay": ["Sail", "Obsidian-University Blue"],`
@@ -74,7 +85,7 @@ const objAttr = [
     },
     {
         id: 6,
-        output: `"retro": false`
+        output: `"retro": false,`
     },
     {
         id: 5,
