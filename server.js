@@ -32,12 +32,10 @@ app.use('/api/test/brandlist', testbrandList)
 
 
 
+
 // Error handling for undefined request
-app.use(function (req, res, next) {
+app.use('/', function (req, res, next) {
   res.status(404).json({ status: 404, err: 'This page does not exist' })
-  console.log(res.statusCode)
-
-
 
 });
 

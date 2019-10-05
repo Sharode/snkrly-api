@@ -1,0 +1,11 @@
+"middleware": {
+    "notFound": {
+        "priority": 130,
+        "module": "path:./lib/404"
+    },
+    "errorResponse": {
+        "priority": 140,
+        "module": "path:./lib/error"
+    }
+}
+}

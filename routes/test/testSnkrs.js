@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 // Route  /api/test/snkr
 // Method POST
 // Desc   At a snkr to thr database
-router.post('/', async (req, res, next) => {
+router.post('/', async (req, res) => {
     try {
         const { name, tech, colorway, brand, retro, releaseDate } = req.body
 
@@ -32,7 +32,6 @@ router.post('/', async (req, res, next) => {
         const snkr = await newSnkr.save()
         res.json(snkr)
     } catch (err) {
-        next()
         console.error(err)
         res.status(500).send(err.message)
     }
@@ -42,7 +41,7 @@ router.post('/', async (req, res, next) => {
 // Method GET
 // Desc   retrieve snkr by id
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', async (req, res) => {
     try {
         const snkr = await TestSnkr.findById(req.params.id)
         if (!snkr) return res.status(400).send('This Snkr is not in our datbase')
@@ -50,7 +49,6 @@ router.get('/:id', async (req, res, next) => {
         res.json(snkr)
 
     } catch (err) {
-        next()
         console.error(err.message);
         if (err.kind === "ObjectId")
             return res.status(404).json({ msg: "Snkr not found" });
