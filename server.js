@@ -34,10 +34,10 @@ app.use('/api/test/brandlist', testbrandList)
 
 
 // Error handling for undefined request
-app.use('/', function (req, res, next) {
-  res.status(404).json({ status: 404, err: 'This page does not exist' })
+// app.use('/', function (req, res, next) {
+//   res.status(404).json({ status: 404, err: 'This page does not exist' })
 
-});
+// });
 
 
 // serve static assets in production
