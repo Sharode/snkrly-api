@@ -4,6 +4,7 @@ import Card from './Card'
 import { addSnkr, getSnkr } from '../utils/methods'
 
 import PropTypes from 'prop-types'
+import { Collection } from 'mongoose';
 
 const Product = () => {
 
@@ -28,35 +29,47 @@ const Product = () => {
     } = formData
 
 
+    const colorConvert = (formData) => {
+        let colors = colorway.split(',').map(item => (item = item.trim()))
+        setFormData({
+            ...formData,
+            colorway: [...colors]
+        })
+
+    }
+
     const onSubmit = e => {
         e.preventDefault();
         console.log(formData)
 
-        addSnkr(formData);
+        // colorConvert()
+        console.log(formData)
 
-        // setData(getMileStones());
+
+        // addSnkr(formData);
+
+    };
+
+    const fetchData = async () => {
+        const { data: snkrs } = await await axios("/api/test/snkrs");
+        setData(snkrs.slice(-2));
+        // .slice(0, 2)
     };
 
     useEffect(() => {
-        const fetchData = async () => {
-            const {
-                data: snkrs
-            } = await axios("/api/test/snkrs");
-            setData(snkrs.slice(-2));
-            // .slice(0, 2)
-        };
         fetchData();
-        console.log(getSnkr())
-
-
     }, [onSubmit])
 
 
 
     const onChange = e => {
+        let colors;
+        if (e.target.name === colorway) {
+            colors = colorway.split(',').map(item => (item = item.trim()))
+        }
         setFormData({
             ...formData,
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value,
         });
     };
 
@@ -74,7 +87,7 @@ const Product = () => {
                     <div className="flex flex-wrap mx-3 mb-6" >
                         <div className="w-full px-3" >
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                for="colorway" >
+                            >
                                 Brand </label> <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     name="brand"
                                     type="text"
@@ -84,10 +97,10 @@ const Product = () => {
                                     onChange={
                                         e => onChange(e)
                                     }
-                                    placeholder="What do you want to accomplish?" />
+                                    placeholder="Name of Brand... Nike, Puma, Adidas" />
                         </div> <div className="w-full px-3" >
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                for="name" >
+                            >
                                 Name </label> <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     name="name"
                                     type="text"
@@ -97,10 +110,10 @@ const Product = () => {
                                     onChange={
                                         e => onChange(e)
                                     }
-                                    placeholder="What do you want to accomplish?" />
+                                    placeholder="Name of sneaker" />
                         </div> <div className="w-full px-3" >
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                for="tech">
+                            >
                                 Technology </label> <input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     name="tech"
                                     type="text"
@@ -110,10 +123,10 @@ const Product = () => {
                                     onChange={
                                         e => onChange(e)
                                     }
-                                    placeholder="What do you want to accomplish?" />
+                                    placeholder="What material is the sole made of" />
                         </div> <div className="w-full px-3" >
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                for="colorway" >
+                            >
                                 Colorway </label> <
                                 input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                 name="colorway"
@@ -124,12 +137,12 @@ const Product = () => {
                                 onChange={
                                     e => onChange(e)
                                 }
-                                placeholder="What do you want to accomplish?" />
+                                placeholder="seperate each color by a space" />
                         </div>
                         < div className="py- 5 flex mx-3 mb-2 w-full md:justify-around " >
                             <div className="w-full mb-6 md:mb-0" >
                                 < label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="grid-state" >
+                                >
                                     Release Date </label> <
                                     input className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                                     type="date"
@@ -144,7 +157,7 @@ const Product = () => {
 
                         </div> <div className="w-full flex flex-row px-3" >
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                for="goal-description" >
+                            >
                                 Retro </label>
 
                             <input className="mr-2 ml-4 leading-tight"
