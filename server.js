@@ -4,6 +4,8 @@ const app = express()
 const path = require('path')
 const connectDB = require('./config/db')
 
+const morgan = require('morgan')
+
 //import Routes
 const brandList = require('./routes/brandlist')
 const snkrs = require('./routes/snkrs')
@@ -18,6 +20,7 @@ connectDB()
 //initialize middlware
 app.use(cors())
 app.use(express.json({ extended: false }));
+app.use(morgan('dev'));
 
 //Define Routes
 app.use('/api/snkrs', snkrs)
@@ -26,6 +29,17 @@ app.use('/api/brands', brandList)
 // Test mode routes
 app.use('/api/test/snkrs', testsnkrs)
 app.use('/api/test/brandlist', testbrandList)
+
+
+
+// Error handling for undefined request
+app.use(function (req, res, next) {
+  res.status(404).json({ status: 404, err: 'This page does not exist' })
+  console.log(res.statusCode)
+
+
+
+});
 
 
 // serve static assets in production
